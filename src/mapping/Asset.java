@@ -57,6 +57,34 @@ public class Asset {
 		
 		return fields;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	
+	public float getPurchValue() {
+		return purchValue;
+	}
+	
+	public Date getPurchDate() {
+		return purchDate;
+	}
+	
+	public Date getWarrantyDate() {
+		return warrantyDate;
+	}
 
 	public String getInputString() {
 		String purch = "'" + purchDate.toString() + "'";

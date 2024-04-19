@@ -4,13 +4,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import mapping.Location;
 import mapping.TagHandler;
 
 public class AddLocationController {
 	@FXML Button createLocationBtn; 
 	@FXML TextField locationTextField;
-	@FXML TextField descriptionTextField;
+	@FXML TextArea descriptionTextField;
 	
 	public void createLocation() { 
 		//Return an error if the location field is empty. Description field is optional.

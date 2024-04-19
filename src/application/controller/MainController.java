@@ -9,7 +9,8 @@ import java.net.URL;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox; 
+import javafx.scene.layout.HBox;
+import mapping.AssetHandler; 
 
 //Controls Main.fxml for switching between pages
 public class MainController { 
@@ -37,9 +38,17 @@ public class MainController {
 		loadFXML("view/AddNewLocation.fxml"); 
 	}
 	
+	@FXML public void goToAddAsset() { 
+		loadFXML("view/AddNewAsset.fxml"); 
+	}
+	
+	@FXML public void goToSearchAsset() { 
+		loadFXML("view/SearchAsset.fxml"); 
+	}
+	
 	
 	//Loads the display on the right.
-	private void loadFXML(String fxmlPath) { 
+	protected void loadFXML(String fxmlPath) { 
 		URL url = getClass().getClassLoader().getResource(fxmlPath); 
 		AnchorPane panel;
 		try {

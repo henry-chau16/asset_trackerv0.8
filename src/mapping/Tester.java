@@ -12,15 +12,15 @@ public class Tester {
 		TagHandler tags = new TagHandler();
 		AssetHandler assets = new AssetHandler();
 		
-		ArrayList<Tag> cats = TagHandler.getCategories();
-		ArrayList<Tag> locs = TagHandler.getLocations();
+		ArrayList<String> cats = TagHandler.getCategories();
+		ArrayList<String> locs = TagHandler.getLocations();
 		
-		for(Tag tag: cats) {
-			System.out.println(tag.getInputString());
+		for(String str: cats) {
+			System.out.println(str);
 		}
 		
-		for(Tag tag: locs) {
-			System.out.println(tag.getInputString());
+		for(String str: locs) {
+			System.out.println(str);
 		}
 		
 		

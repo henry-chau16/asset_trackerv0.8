@@ -13,7 +13,7 @@ public class TagHandler {
 	
 	private static SQLController sqlite = SQLController.getConnector();;
 	
-	private static HashMap<String, ArrayList<Tag>> tagMap = new HashMap<String, ArrayList<Tag>>();
+	private static HashMap<String, ArrayList<String>> tagMap = new HashMap<String, ArrayList<String>>();
 
 	public TagHandler() {
 	}
@@ -24,7 +24,7 @@ public class TagHandler {
 		String result = (sqlite.insertData(tag.getTableName(), tag.getFields(), tag.getInputString()));
 		
 		if(result == "Successfully Added Item") {
-			tagMap.get(tag.getTableName()).add(tag);
+			tagMap.get(tag.getTableName()).add(tag.getName());
 		}
 		
 		return result;
@@ -32,15 +32,15 @@ public class TagHandler {
 	
 	public static void importTags() {
 		
-		tagMap.put("Categories", new ArrayList<Tag>());
-		tagMap.put("Locations", new ArrayList<Tag>());	
+		tagMap.put("Categories", new ArrayList<String>());
+		tagMap.put("Locations", new ArrayList<String>());	
 		
 		ResultSet rsCat = sqlite.searchData("Categories", "Name", "'%'");
 		
 		try {
 			while(rsCat.next()) {
 				Category cat = new Category(rsCat.getString("Name"));
-				tagMap.get("Categories").add(cat);
+				tagMap.get("Categories").add(cat.getName());
 			}
 			
 			rsCat.close();
@@ -50,7 +50,7 @@ public class TagHandler {
 			
 			while(rsLoc.next()) {
 				Location loc = new Location(rsLoc.getString("Name"), rsLoc.getString("Description"));
-				tagMap.get("Categories").add(loc);
+				tagMap.get("Locations").add(loc.getName());
 			}
 			
 			rsLoc.close();
@@ -61,11 +61,12 @@ public class TagHandler {
 		}
 	}
 	
-	public static ArrayList<Tag> getCategories(){
+	
+	public static ArrayList<String> getCategories(){
 		return tagMap.get("Categories");
 	}
 	
-	public static ArrayList<Tag> getLocations(){
+	public static ArrayList<String> getLocations(){
 		return tagMap.get("Locations");
 	}
 }
